@@ -13,3 +13,8 @@ Markup : ```javascript
          ```
 Markup : * project.ipynb  - Jupyter notebook, with all the code.
          * Run_model.py   - Script that contains the code from the notebook - easy to run.
+
+
+- George Washington
+- John Adams
+- Thomas Jefferson
