@@ -1,0 +1,46 @@
+filename = 'BB_test.xlsx';
+load res_test
+
+filename = 'BB_train.xlsx';
+load res_train
+
+% A = {'Date','No.of Stocks', 'WinRatio', 'Weighted MeanWinRatio', 'meanAlphaMark', 'Weighted meanAlphaMark', 'NoOfStocks_WinRatio'};
+A = {'Name','x1', 'y1', 'x2', 'y2'};
+
+
+B0 = f_names;
+B1 = num2cell(xy1_xy2(:,1));
+B2 = num2cell(xy1_xy2(:,2));
+B3 = num2cell(xy1_xy2(:,3));
+B4 = num2cell(xy1_xy2(:,4));
+
+B = [B0,B1,B2,B3,B4];
+C = [A;B];
+
+
+
+sheet = 1;
+xlRange = 'A1';
+xlswrite(filename,C,sheet,xlRange)
+
+%{
+%-- Daily Win Percent --
+no_of_dailyStocks_Thresh=0;
+ii = find(no_of_predictedStocks_vec > no_of_dailyStocks_Thresh);
+
+DailyWinPercent = length(find(winPercent_vec(ii) > 0.5))/length(find(no_of_predictedStocks_vec(ii)));
+%DailyWinPercent = length(find(winPercent_vec > 0.5))/length(winPercent_vec);
+
+D = {'Daily win% (by NoOfStocks_WinRatio)';};
+D = [D; num2cell(DailyWinPercent*100)]
+sheet = 1;
+xlRange = 'K1';
+xlswrite(filename,D,sheet,xlRange)
+
+DailyWinPercent = length(find(meanAlphaMark_vec(ii) > 0))/length(find(no_of_predictedStocks_vec(ii)));
+D = {'Daily win% (by AlphaMark > 0)';};
+D = [D; num2cell(DailyWinPercent*100)]
+sheet = 1;
+xlRange = 'O1';
+xlswrite(filename,D,sheet,xlRange)
+%}
