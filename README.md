@@ -2,10 +2,8 @@
 
 Kaggle competition [link](https://www.kaggle.com/c/humpback-whale-identification/overview)
 
-# Humpback Whale Identification
-
 ## Competition Description
-In this competition, participants are challenged to build an algorithm to identify individual whales in images. You’ll analyze Happywhale’s database of over 25,000 images, gathered from research institutions and public contributors. By contributing, you’ll help to open rich fields of understanding for marine mammal population dynamics around the globe.
+In this competition, participants are challenged to develop algorithms for identifying individual whales in images. The task involves analyzing Happywhale’s database, which contains over 25,000 images collected from research institutions and public contributors. Contributions to this effort aim to enhance understanding of marine mammal population dynamics globally.
 
 ## Evaluation
 Submissions are evaluated according to the Mean Average Precision @ 5 (MAP@5).
@@ -37,6 +35,14 @@ To focus on the whale's tail while minimizing background noise, I employed bound
    - For images with high saturation and low grayscale, a threshold was determined from the external background and combined with the grayscale from the lower threshold, creating another union for pixel coordinates.
 
 Bounding boxes smaller than 10% of the image were considered failures.
+The Bounding box creation process:
+![Image 1](images/1.jpg)
+
+Some results:
+![Image 2](images/2.jpg)
+
+How the vounding boxes were sored:
+![Image 3](images/3.jpg)
 
 ### Image Augmentation Techniques
 Each image underwent three types of augmentations:
